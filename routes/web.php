@@ -36,30 +36,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home', [HomeController::class,'index'])->middleware(['auth'])->name('home');
 
-
     Route::get('/formkearsitekturan', [FormKearsitekturanController::class,'index'])->name('formkearsitekturan');
-
 
     Route::resource('/formkartografi', FormKartografiController::class)->middleware(['auth'])->names('formkartografi');
 
-
-
-
-
     Route::get('/arsipkearsitekturan', [ArsipKearsitekturanController::class,'index'])->name('arsipkearsitekturan');
-    Route::get('/arsipkearsitekturan', [ArsipKearsitekturanController::class,'index'])->name('arsipkearsitekturan');
-
 
 
     Route::resource('arsipkartografi', ArsipKartografiController::class)->names('arsipkartografi');
 
     
 });
-
-
-
-
-
-
 
 require __DIR__.'/auth.php';

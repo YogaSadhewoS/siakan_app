@@ -15,8 +15,8 @@
         <div class="card rounded-0" style="width: 100%;">
             <h4 class="text-form ml-40 mt-10">Formulir Deskripsi Arsip Kartografi</h4>
             <span class="border-form border-2 mr-40 ml-40"></span>
-            <form method="post" action="/formkartografi/{{ $kartografi->id }}" class="center mr-40 ml-40 mt-10">
-                @method('put')
+            <form method="POST" action="{{ route('arsipkartografi.update', $kartografi->id) }}" class="center mr-40 ml-40 mt-10">
+                @method('PUT')
                 @csrf
                 <div class="form-group row">
                     <label for="fonds" class="text-form col-sm-2 col-form-label">FONDS</label>
@@ -95,12 +95,14 @@
                     <legend class="col-form-label col-sm-2 pt-0 text-form">WARNA</legend>
                     <div class="form-check form-check-inline mr-5">
                         <input class="form-check-input" type="radio" name="warna"
-                            value="Hitam Putih" required>
+                            value="Hitam Putih" required
+                            {{ $kartografi->warna == 'Hitam Putih' ? 'checked' : '' }}>
                         <label class="form-check-label " for="warna">HITAM PUTIH</label>
                     </div>
                     <div class="form-check form-check-inline ml-10">
                         <input class="form-check-input" type="radio" name="warna"
-                            value="Warna" required>
+                            value="Warna" required
+                            {{ $kartografi->warna == 'Warna' ? 'checked' : '' }}>
                         <label class="form-check-label " for="warna">WARNA</label>
                     </div>
                 </fieldset>
@@ -109,12 +111,14 @@
                     <legend class="col-form-label col-sm-2 pt-0 text-form">CETAK/TULIS</legend>
                     <div class="form-check form-check-inline mr-5">
                         <input class="form-check-input" type="radio" name="cetak_tulis"
-                            value="Cetak" required>
+                            value="Cetak" required
+                            {{ $kartografi->cetak_tulis == 'Cetak' ? 'checked' : '' }}>
                         <label class="form-check-label " for="cetak_tulis">CETAK</label>
                     </div>
                     <div class="form-check form-check-inline ml-20">
                         <input class="form-check-input" type="radio" name="cetak_tulis"
-                            value="Tulis" required>
+                            value="Tulis" required
+                            {{ $kartografi->cetak_tulis == 'Tulis' ? 'checked' : '' }}>
                         <label class="form-check-label " for="cetak_tulis">TULIS</label>
                     </div>
                 </fieldset>
@@ -123,12 +127,14 @@
                     <legend class="col-form-label col-sm-2 pt-0 text-form">TINTA/PENSIL</legend>
                     <div class="form-check form-check-inline mr-5">
                         <input class="form-check-input" type="radio" name="tinta_pensil"
-                            value="Tinta" required>
+                            value="Tinta" required
+                            {{ $kartografi->tinta_pensil == 'Tinta' ? 'checked' : '' }}>
                         <label class="form-check-label " for="tinta_pensil">TINTA</label>
                     </div>
                     <div class="form-check form-check-inline ml-20">
                         <input class="form-check-input" type="radio" name="tinta_pensil"
-                            value="Pensil" required>
+                            value="Pensil" required
+                            {{ $kartografi->tinta_pensil == 'Pensil' ? 'checked' : '' }}>
                         <label class="form-check-label " for="tinta_pensil">PENSIL</label>
                     </div>
                 </fieldset>
@@ -137,12 +143,14 @@
                     <legend class="col-form-label col-sm-2 pt-0 text-form">ASLI/FOTOKOPI</legend>
                     <div class="form-check form-check-inline mr-5">
                         <input class="form-check-input" type="radio" name="asli_fotokopi"
-                            value="Asli" required>
+                            value="Asli" required 
+                            {{ $kartografi->asli_fotokopi == 'Asli' ? 'checked' : '' }}>
                         <label class="form-check-label " for="asli_fotokopi">ASLI</label>
                     </div>
                     <div class="form-check form-check-inline ml-20">
                         <input class="form-check-input" type="radio" name="asli_fotokopi"
-                            value="Fotokopi" required>
+                            value="Fotokopi" required
+                            {{ $kartografi->asli_fotokopi == 'Fotokopi' ? 'checked' : '' }}>
                         <label class="form-check-label " for="asli_fotokopi">FOTOKOPI</label>
                     </div>
                 </fieldset>
@@ -169,7 +177,7 @@
                         <select class="form-select" name="tipe_id">
                             @foreach ($tipes as $tipe)
                                 @if (in_array($tipe->id, [8, 9, 10]))
-                                    <option value="{{ $tipe->id }}">{{ $tipe->nama }}</option>
+                                <option value="{{ $tipe->id }}" {{ $selectedTipeId == $tipe->id ? 'selected' : '' }}>{{ $tipe->nama }}</option>
                                 @endif
                             @endforeach
 
