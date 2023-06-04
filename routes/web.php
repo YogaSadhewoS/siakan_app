@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-})->middleware(['auth', 'verified'])->name('home');
+})->middleware(['auth', 'verified'])->name('login');
 
 
 
@@ -36,12 +36,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home', [HomeController::class,'index'])->middleware(['auth'])->name('home');
 
-    Route::get('/formkearsitekturan', [FormKearsitekturanController::class,'index'])->name('formkearsitekturan');
+    Route::resource('/formkearsitekturan', FormKearsitekturanController::class)->middleware(['admin'])->names('formkearsitekturan');
 
-    Route::resource('/formkartografi', FormKartografiController::class)->middleware(['auth'])->names('formkartografi');
+    Route::resource('/formkartografi', FormKartografiController::class)->middleware(['admin'])->names('formkartografi');
 
-    Route::get('/arsipkearsitekturan', [ArsipKearsitekturanController::class,'index'])->name('arsipkearsitekturan');
-
+    Route::resource('arsipkearsitekturan', ArsipKearsitekturanController::class)->names('arsipkearsitekturan');
 
     Route::resource('arsipkartografi', ArsipKartografiController::class)->names('arsipkartografi');
 

@@ -12,100 +12,90 @@
   <body>
 
         <div class="card rounded-0" style="width: 100%;">
-            <h4 class="text-form ml-40 mt-10">Arsip Kearsitekturan</h4>
+            <h4 class="text-form ml-40 mt-10">Detail Arsip Kearsitekturan - {{ $kearsitekturan->judul }}</h4>
             <span class="border-form border-2 mr-40 ml-40"></span>
             <div class="card-body">
                 <div class="table-responsive">     
                     <br>
+                    <a href="{{ route('arsipkearsitekturan.index') }}" class="btn btn-primary ml-40">Kembali</a>
                     <br>
-                    <table id="dataTable" class="table table-bordered text-form mr-40 ml-40 text-center" cellspacing="0">
+                    <br>
+                    <table id="dataTable" class="table table-bordered text-form mr-40 ml-40" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>NO URUT</th>
-                                <th>FONDS</th>
-                                <th>JUDUL</th>
-                                <th>KURUN WAKTU</th>
-                                <th>ISI INFORMASI</th>
-                                <th>JENIS PETA</th>
-                                <th>PDF FILE</th>
-                                <th>DETAIL</th>
+                                <td>Fonds:</td>
+                                <td>: {{ $kearsitekturan->fonds }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Seri Arsip</td>
+                                <td>: {{ $kearsitekturan->seri_arsip }}</td>
+                            </tr>
+                            <tr>
+                                <td>File</td>
+                                <td>: {{ $kearsitekturan->file }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nomor Urut</td>
+                                <td>: {{ $kearsitekturan->nomor_urut }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kode</td>
+                                <td>: {{ $kearsitekturan->kode }}</td>
+                            </tr>
+                            <tr>
+                                <td>Judul</td>
+                                <td>: {{ $kearsitekturan->judul }}</td>
+                            </tr>
+                            <tr>
+                                <td>Isi Informasi</td>
+                                <td>: {{ $kearsitekturan->isi_informasi }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kurun Waktu</td>
+                                <td>: {{ $kearsitekturan->kurun_waktu }}</td>
+                            </tr>
+                            <tr>
+                                <td>Volume</td>
+                                <td>: {{ $kearsitekturan->volume }}</td>
+                            </tr>
+                            <tr>
+                                <td>Ukuran</td>
+                                <td>: {{ $kearsitekturan->ukuran }}</td>
+                            </tr>
+                            <tr>
+                                <td>Warna</td>
+                                <td>: {{ $kearsitekturan->warna }}</td>
+                            </tr>
+                            <tr>
+                                <td>Cetak/Tulis</td>
+                                <td>: {{ $kearsitekturan->cetak_tulis }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tinta/Pensil</td>
+                                <td>: {{ $kearsitekturan->tinta_pensil }}</td>
+                            </tr>
+                            <tr>
+                                <td>Asli/Fotokopi</td>
+                                <td>: {{ $kearsitekturan->asli_fotokopi }}</td>
+                            </tr>
+                            <tr>
+                                <td>Penerbit</td>
+                                <td>: {{ $kearsitekturan->penerbit }}</td>
+                            </tr>
+                            <tr>
+                                <td>Skala</td>
+                                <td>: {{ $kearsitekturan->skala }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tunjuk silang</td>
+                                <td>: {{ $kearsitekturan->referensi }}</td>
                             </tr>
                         </thead>
-                        <tbody>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href="" class="btn btn-primary btn-sm ml-2">Edit</a></td>
-                            </tr>
-
-                        </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-
-        <div id="tambah" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                <h4 class="modal-title">Masukan Data</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                <form action="/pasok/store" method="post">
-
-                <div class="form-group">
-                    <div class="input_fields_wrap">
-                    <button class="add_field_button btn btn-primary">Tambah Fields</button>
-                    <table>
-                    <tr>
-                        <td>
-                        <label for="">Nama Barang</label>
-                        <br>
-                            <select name="id_barang[]" id="" class="myselect form-control"  required>
-                                <option selected disabled value="">Pilih Jenis Barang</option>
-
-                                <option value=""></option>
-     
-                            </select>
-                            </div>
-                        </td>
-                        <td class="pl-4">
-                        <label for="">Jumlah</label>
-                        <input type="number" name="jumlah[]" class="form-control" required placeholder="Masukan Jumlah" required>
-                        </td>
-                    </tr>
-                    </table>
-                    
-                    </div>
-                    <div class="form-group">
-                        <label for="">Nama Pemasok</label>
-                        <input type="text" name="nama_pemasok" class="form-control" placeholder="Masukan Nama Pemasok" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Tanggal Pasok</label>
-                        <input type="date" name="tanggal_pasok" class="form-control" required>
-                    </div>
-                    
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                </form>
-                </div>
-            </div>
-            </div>
-        </div>
         </div>
 
 

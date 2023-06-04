@@ -11,32 +11,64 @@
 
   <body>
 
-        <div class="card rounded-0 " style="width: 100%; height: 100%;">
-            <h4 class="text-form ml-40 mt-10">Kumpulan Arsip Kearsitekturan</h4>
-            <span class="border-form border-2 mr-40 ml-40"></span>
-            <div class="card-body">
-                
-            <div class="row-responsive mt-3 mr-40 ml-40 border-primary">
-                <div class="col-md-5  ">
-                    <div class="input-group">
-                        <input class="form-control border-end-0 border rounded-pill" type="search" value="search" id="example-search-input">
-                        <span class="input-group-append">
-                            <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5 rounded-pill" type="button">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
+        <!-- <div class="card rounded-0" style="width: 100%;"> -->
+            <!-- <h4 class="text-form ml-40 mt-10">Arsip Kearsitekturan</h4> -->
+            <span class="mr-10 ml-20"></span>
+            <div class="card-body mr-20 ml-20">
+                <div class="container-fluid ">     
+                <div class="card-header py-6 ">
+                            <h6 class="m-2 h2 font-weight-bold text-primary">Kumpulan Arsip Kearsitekturan</h6>
+                            <!-- <span class="border-form border-2 mr-40 ml-40"></span> -->
+
+                        </div>
+                    <br>
+                    @if ($message = Session::get('success'))
+                            <div class="alert alert-success" ml-40>
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
+                    <table id="table" class="ui celled table table-bordered" style="width:100%;">
+                    <!-- class="table table-bordered text-form mr-40 ml-40 text-center" cellspacing="0" -->
+                        <thead>
+                            <tr>
+                                <th>NO URUT</th>
+                                <th>FONDS</th>
+                                <th>JUDUL</th>
+                                <th>KURUN WAKTU</th>
+                                <th>ISI INFORMASI</th>
+                                <th>JENIS PETA</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($kearsitekturans as $kearsitekturan)
+                            <tr>
+                                <td>{{ $kearsitekturan->nomor_urut }}</td>
+                                <td>{{ $kearsitekturan->fonds }}</td>
+                                <td>{{ $kearsitekturan->judul }}</td>
+                                <td>{{ $kearsitekturan->kurun_waktu }}</td>
+                                <td>{{ $kearsitekturan->isi_informasi }}</td>
+                                <td>{{ $kearsitekturan->tipe->nama }}</td>
+                                <td>
+                                    {{--  <a href="/arsipkearsitekturan{{ $kearsitekturan->id }}" class="btn btn-primary btn-sm ml-2">Detail</a>    
+                                    <a href="" class="btn btn-warning btn-sm ml-2">Edit</a>
+                                    <a href="" class="btn btn-danger btn-sm ml-2">Hapus</a></td>  --}}
+                                    <form action="{{ route('arsipkearsitekturan.destroy', $kearsitekturan->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('arsipkearsitekturan.show', $kearsitekturan->id) }}" class="btn btn-info">Show</a>
+                                        @can('admin')
+                                        <a href="{{ route('arsipkearsitekturan.edit', $kearsitekturan->id) }}" class="btn btn-primary">Edit</a>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Delete</button>
+                                        @endcan
+                                    </form>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-
-
-
-            
-            </div>
         </div>
-
-
 
 
 
@@ -51,9 +83,6 @@
 
         .border-form{
             border-color: #0091E1;
-        }
-        .ms-n5 {
-            margin-left: -40px;
         }
     </style>
 

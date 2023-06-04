@@ -18,6 +18,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     
     
     
@@ -49,8 +52,9 @@
           <li><a class="link_name" href="{{route('home')}}">Dashboard</a></li>
         </ul>
       </li>
+      @can('admin')
       <li>
-        <div class="iocn-link">
+        <div class="icon-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
             <span class="link_name">Formulir</span>
@@ -59,18 +63,19 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Formulir</a></li>
-          <li><a href="{{route('formkearsitekturan')}}">Formulir Kearsitekturan</a></li>
+          <li><a href="{{route('formkearsitekturan.index')}}">Formulir Kearsitekturan</a></li>
           <li><a href="{{route('formkartografi.index')}}">Formulir Kartografi</a></li>
         </ul>
       </li>
+      @endcan
 
       <li>
-        <a href="{{route('arsipkearsitekturan')}}">
+        <a href="{{route('arsipkearsitekturan.index')}}">
           <i class='bx bx-pie-chart-alt-2' ></i>
           <span class="link_name">Arsip Kearsitekturan</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="{{route('arsipkearsitekturan')}}">Arsip Kearsitekturan</a></li>
+          <li><a class="link_name" href="{{route('arsipkearsitekturan.index')}}">Arsip Kearsitekturan</a></li>
         </ul>
       </li>
       <li>
@@ -144,6 +149,17 @@
                   sidebar.classList.toggle("close");
                   });
 
+          </script>
+
+
+          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+          <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+          <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+          <script>
+            $(document).ready(function () {
+              $('#table').DataTable();
+            });
           </script>
 
 

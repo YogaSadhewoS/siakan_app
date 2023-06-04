@@ -11,6 +11,11 @@ class Tipe extends Model
 
     protected $guarded = ['id'];
     
+    public function kearsitekturan()
+    {
+        return $this->hasMany(Kearsitekturan::class);
+    }
+    
     public function kartografi()
     {
         return $this->hasMany(Kartografi::class);

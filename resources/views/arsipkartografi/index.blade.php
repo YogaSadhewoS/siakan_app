@@ -11,13 +11,13 @@
 
   <body>
 
-        {{--  <!-- <div class="card rounded-0" style="width: 100%;"> -->
-            <!-- <h4 class="text-form ml-40 mt-10">Arsip Kartografi</h4> -->  --}}
-            <span class="mr-15 ml-20"></span>
-            <div class="card-body">
-                <div class="container-fluid">     
-                <div class="card-header py-6">
-                            <h6 class="m-2 h2 font-weight-bold text-primary">Kumpulan Arsip Kearsitekturan</h6>
+        <!-- <div class="card rounded-0" style="width: 100%;"> -->
+            <!-- <h4 class="text-form ml-40 mt-10">Arsip Kartografi</h4> -->
+            <span class="mr-10 ml-20"></span>
+            <div class="card-body mr-20 ml-20">
+                <div class="container-fluid ">     
+                <div class="card-header py-6 ">
+                            <h6 class="m-2 h2 font-weight-bold text-primary">Kumpulan Arsip Kartografi</h6>
                             <!-- <span class="border-form border-2 mr-40 ml-40"></span> -->
 
                         </div>
@@ -27,7 +27,7 @@
                                 <p>{{ $message }}</p>
                             </div>
                         @endif
-                    <table id="table" class="ui celled table" style="width:100%;">
+                    <table id="table" class="ui celled table table-bordered" style="width:100%;">
                     <!-- class="table table-bordered text-form mr-40 ml-40 text-center" cellspacing="0" -->
                         <thead>
                             <tr>
@@ -50,12 +50,17 @@
                                 <td>{{ $kartografi->isi_informasi }}</td>
                                 <td>{{ $kartografi->tipe->nama }}</td>
                                 <td>
+                                    {{--  <a href="/arsipkartografi{{ $kartografi->id }}" class="btn btn-primary btn-sm ml-2">Detail</a>    
+                                    <a href="" class="btn btn-warning btn-sm ml-2">Edit</a>
+                                    <a href="" class="btn btn-danger btn-sm ml-2">Hapus</a></td>  --}}
                                     <form action="{{ route('arsipkartografi.destroy', $kartografi->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('arsipkartografi.show', $kartografi->id) }}" class="btn btn-info">Show</a>
+                                        @can('admin')
                                         <a href="{{ route('arsipkartografi.edit', $kartografi->id) }}" class="btn btn-primary">Edit</a>
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Delete</button>
+                                        @endcan
                                     </form>
                             </tr>
                             @endforeach
@@ -63,7 +68,7 @@
                     </table>
                 </div>
             </div>
-        {{--  </div>  --}}
+        </div>
 
 
 

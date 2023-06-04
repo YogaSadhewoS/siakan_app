@@ -47,6 +47,7 @@ class ArsipKartografiController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('admin');
         $kartografi = Kartografi::find($id);
         $tipes = Tipe::all();
         $selectedTipeId = $kartografi->tipe_id; // Mengambil ID tipe arsip yang dipilih sebelumnya

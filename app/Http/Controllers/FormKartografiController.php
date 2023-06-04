@@ -13,6 +13,7 @@ class FormKartografiController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         return view('formkartografi.index', [
             'tipes' => Tipe::all()
         ]);
