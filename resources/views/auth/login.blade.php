@@ -1,5 +1,10 @@
 <x-guest-layout>
     <!-- Session Status -->
+    @if(session('success'))
+    <div class="alert alert-success text-center">
+        {{ session('success') }}
+    </div>
+    @endif
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">

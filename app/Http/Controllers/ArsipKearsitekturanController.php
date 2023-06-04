@@ -117,7 +117,7 @@ class ArsipKearsitekturanController extends Controller
         if ($kearsitekturan) {
             $kearsitekturan->delete();
             return redirect()
-                ->route('arsipkekearsitekturan.index')
+                ->route('arsipkearsitekturan.index')
                 ->with('success', 'Kearsitekturan deleted successfully.');
         }
         return redirect()

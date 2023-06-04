@@ -13,6 +13,7 @@
         <link href="/css/dashboard.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -22,7 +23,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     
-    
+        <style>
+            .navbar-collapse {
+              display: flex;
+              justify-content: center;
+            }
+        </style>
     
     
     
@@ -31,12 +37,31 @@
 <body>
 
 
-<div class="header" >
-  <div>
-  <span class="text">Sistem Informasi Arsip Kearsitekturan dan Kartografi</span>
-  </div>
-</div>
-
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="navbar-collapse" style="width: 1700px;">
+        <a class="navbar-brand text-primary">Sistem Informasi Arsip Kearsitekturan dan Kartografi</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/images/orang.png" alt="User" width="32" height="32">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
 
   <div class="sidebar close">
     <div class="logo-details">
@@ -52,9 +77,8 @@
           <li><a class="link_name" href="{{route('home')}}">Dashboard</a></li>
         </ul>
       </li>
-      @can('admin')
       <li>
-        <div class="icon-link">
+        <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
             <span class="link_name">Formulir</span>
@@ -67,7 +91,6 @@
           <li><a href="{{route('formkartografi.index')}}">Formulir Kartografi</a></li>
         </ul>
       </li>
-      @endcan
 
       <li>
         <a href="{{route('arsipkearsitekturan.index')}}">
@@ -100,17 +123,17 @@
       <li>
         <a href="{{ route('logout') }}"
         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+              document.getElementById('logout-form').submit();">
           <i class='bx bx-history'></i>
           <span class="link_name">Logout</span>
         </a>
         <ul class="sub-menu blank">
           <li>
             <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+            </a>
 
                                     
           </li>
@@ -155,6 +178,7 @@
           <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
           <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
           <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
           <script>
             $(document).ready(function () {
@@ -163,7 +187,13 @@
           </script>
 
 
+
+          
+
+
 </div>
 
 </body>
 </html>
+
+

@@ -55,7 +55,7 @@
                 Sudah punya akun?
                 <a
                     href="{{ route('login') }}" style="color: #008AD7;">
-                    {{ __('Klik ini') }}
+                    {{ __('Klik disini') }}
                 </a>
             </p>
         </div>

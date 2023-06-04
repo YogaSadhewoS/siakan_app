@@ -75,6 +75,12 @@
                     </div>
                 </div>
 
+                <script>
+                    const inputElement = document.getElementById('kurun_waktu');
+                    const today = new Date().toISOString().split('T')[0];
+                    inputElement.setAttribute('max', today);
+                </script>
+
                 <div class="form-group row">
                     <label for="volume" class="text-form col-sm-2 col-form-label">VOLUME</label>
                     <div class="col-sm-10 mb-4">

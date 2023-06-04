@@ -27,6 +27,11 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('login');
 
+Route::get('/', function () {
+    return view('halamanlanding.index');
+});
+
+Route::get('/datakartografiuser', [ArsipKartografiController::class,'datakartografiuser'])->name('datakartografiuser');
 
 
 Route::middleware('auth')->group(function () {
@@ -46,5 +51,6 @@ Route::middleware('auth')->group(function () {
 
     
 });
+
 
 require __DIR__.'/auth.php';

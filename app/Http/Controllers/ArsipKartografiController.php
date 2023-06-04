@@ -124,4 +124,10 @@ class ArsipKartografiController extends Controller
             ->route('arsipkartografi.index')
             ->with('error', 'Failed to delete Kartografi.');
     }
+    
+    public function datakartografiuser()
+    {
+        $kartografis = Kartografi::all();
+        return view('datakartografiuser.index', ['kartografis' => $kartografis]);
+    }
 }

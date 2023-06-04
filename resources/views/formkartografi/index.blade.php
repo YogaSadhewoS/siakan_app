@@ -42,7 +42,7 @@
                 <div class="form-group row">
                     <label for="nomor_urut" class="text-form col-sm-2 col-form-label">NOMOR URUT</label>
                     <div class="col-sm-3 mb-4">
-                        <input type="number" class="form-control" id="nomor_urut" name="nomor_urut" placeholder="Nomor Urut" required>
+                        <input type="number" class="form-control" id="nomor_urut" name="nomor_urut" placeholder="Nomor Urut" min="1" oninput="validity.valid||(value='');" required>
                     </div>
                 </div>
 
@@ -73,6 +73,12 @@
                         <input type="date" class="form-control" id="kurun_waktu" name="kurun_waktu" placeholder="Kurun Waktu" required>
                     </div>
                 </div>
+                
+                <script>
+                    const inputElement = document.getElementById('kurun_waktu');
+                    const today = new Date().toISOString().split('T')[0];
+                    inputElement.setAttribute('max', today);
+                </script>
 
                 <div class="form-group row">
                     <label for="volume" class="text-form col-sm-2 col-form-label">VOLUME</label>

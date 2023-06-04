@@ -15,15 +15,15 @@
             <h4 class="text-form ml-40 mt-10">Detail Arsip Kartografi - {{ $kartografi->judul }}</h4>
             <span class="border-form border-2 mr-40 ml-40"></span>
             <div class="card-body">
-                <div class="table-responsive">     
+                <div>     
                     <br>
                     <a href="{{ route('arsipkartografi.index') }}" class="btn btn-primary ml-40">Kembali</a>
                     <br>
                     <br>
-                    <table id="dataTable" class="table table-bordered text-form mr-40 ml-40" cellspacing="0">
+                    <table id="dataTable" class="table text-form mr-40 ml-40" style="width: 80%;" cellspacing="0">
                         <thead>
                             <tr>
-                                <td>Fonds:</td>
+                                <td style="width: 300px;">Fonds:</td>
                                 <td>: {{ $kartografi->fonds }}</td>
                                 
                             </tr>
@@ -123,3 +123,5 @@
 
 
 @endsection
+
+
