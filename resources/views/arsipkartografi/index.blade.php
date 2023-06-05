@@ -35,7 +35,7 @@
                 <!-- class="table table-bordered text-form mr-40 ml-40 text-center" cellspacing="0" -->
                     <thead>
                         <tr>
-                            <th>NO URUT</th>
+                            <th>NO</th>
                             <th>FONDS</th>
                             <th>JUDUL</th>
                             <th>KURUN WAKTU</th>
@@ -47,7 +47,7 @@
                     <tbody>
                         @foreach ($kartografis as $kartografi)
                         <tr>
-                            <td>{{ $kartografi->nomor_urut }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $kartografi->fonds }}</td>
                             <td>{{ $kartografi->judul }}</td>
                             <td>{{ $kartografi->kurun_waktu }}</td>
@@ -55,14 +55,16 @@
                             <td>{{ $kartografi->tipe->nama }}</td>
                             <td class="d-flex align-items-center">
                             <a href="#" class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $kartografi->id }}">Show</a>
+                            @can('admin')
                             <a href="{{ route('arsipkartografi.edit', $kartografi->id) }}" class="btn btn-primary btn-sm me-2">Edit</a>
                             <form action="{{ route('arsipkartografi.destroy', $kartografi->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Delete</button>
                             </form>
-                            </td>
-                        </tr>
+                            @endcan
+                        </td>
+                    </tr>
                               <!-- Modal Detail -->
                               <div class="modal fade" id="modalDetail{{ $kartografi->id }}" tabindex="-1" aria-labelledby="modalDetailLabel{{ $kartografi->id }}" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">

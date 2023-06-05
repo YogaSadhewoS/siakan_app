@@ -12,7 +12,7 @@
   <body>
 
         <div class="card rounded-0" style="width: 100%;">
-            <h4 class="text-form ml-40 mt-10">Detail Arsip Kartografi - {{ $kartografi->judul }}</h4>
+            <h4 class="text-form ml-40 mt-10">Detail Arsip Kartografi</h4>
             <span class="border-form border-2 mr-40 ml-40"></span>
             <div class="card-body">
                 <div>     
@@ -20,6 +20,7 @@
                     <a href="{{ route('arsipkartografi.index') }}" class="btn btn-primary ml-40">Kembali</a>
                     <br>
                     <br>
+                    @if ($kartografi)
                     <table id="dataTable" class="table text-form mr-40 ml-40" style="width: 80%;" cellspacing="0">
                         <thead>
                             <tr>
@@ -94,6 +95,9 @@
                         </thead>
 
                     </table>
+                    @else
+                    <p>Arsip kartografi tidak ditemukan.</p>
+                    @endif
                 </div>
             </div>
         </div>

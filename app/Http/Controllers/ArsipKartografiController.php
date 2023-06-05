@@ -124,10 +124,32 @@ class ArsipKartografiController extends Controller
             ->route('arsipkartografi.index')
             ->with('error', 'Failed to delete Kartografi.');
     }
-    
+
     public function datakartografiuser()
     {
         $kartografis = Kartografi::all();
         return view('datakartografiuser.index', ['kartografis' => $kartografis]);
+    }
+
+    public function deletedKartografi()
+    {
+        $kartografis = Kartografi::onlyTrashed()->get();
+        return view('arsipkartografi.trash', ['kartografis' => $kartografis]);
+    }
+
+    public function restore($id)
+    {
+        $kartografi = Kartografi::withTrashed()
+            ->where('id', $id)
+            ->first();
+        if ($kartografi) {
+            $kartografi->restore();
+            return redirect()
+                ->route('arsipkartografi.index')
+                ->with('success', 'Kartografi restored successfully.');
+        }
+        return redirect()
+            ->route('arsipkartografi.index')
+            ->with('error', 'Failed to restore Kartografi.');
     }
 }

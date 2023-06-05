@@ -124,4 +124,32 @@ class ArsipKearsitekturanController extends Controller
             ->route('arsipkearsitekturan.index')
             ->with('error', 'Failed to delete Kearsitekturan.');
     }
+
+    public function datakearsitekturanuser()
+    {
+        $kearsitekturans = Kearsitekturan::all();
+        return view('datakearsitekturanuser.index', ['kearsitekturans' => $kearsitekturans]);
+    }
+
+    public function deletedKearsitekturan()
+    {
+        $kearsitekturans = Kearsitekturan::onlyTrashed()->get();
+        return view('arsipkearsitekturan.trash', ['kearsitekturans' => $kearsitekturans]);
+    }
+
+    public function restore($id)
+    {
+        $kearsitekturan = Kearsitekturan::withTrashed()
+            ->where('id', $id)
+            ->first();
+        if ($kearsitekturan) {
+            $kearsitekturan->restore();
+            return redirect()
+                ->route('arsipkearsitekturan.index')
+                ->with('success', 'Kearsitekturan restored successfully.');
+        }
+        return redirect()
+            ->route('arsipkearsitekturan.index')
+            ->with('error', 'Failed to restore Kearsitekturan.');
+    }
 }

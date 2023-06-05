@@ -31,6 +31,7 @@ Route::get('/', function () {
     return view('halamanlanding.index');
 });
 
+Route::get('/datakearsitekturanuser', [ArsipKearsitekturanController::class,'datakearsitekturanuser'])->name('datakearsitekturanuser');
 Route::get('/datakartografiuser', [ArsipKartografiController::class,'datakartografiuser'])->name('datakartografiuser');
 
 
@@ -45,9 +46,15 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/formkartografi', FormKartografiController::class)->middleware(['admin'])->names('formkartografi');
 
+    Route::get('/arsipkearsitekturan/trash', [ArsipKearsitekturanController::class, 'deletedKearsitekturan'])->middleware(['admin'])->name('arsipkearsitekturan.trash');
+    Route::get('/arsipkearsitekturan/index/{id}/restore', [ArsipKearsitekturanController::class, 'restore'])->name('arsipkearsitekturan.restore');
     Route::resource('arsipkearsitekturan', ArsipKearsitekturanController::class)->names('arsipkearsitekturan');
 
+    Route::get('/arsipkartografi/trash', [ArsipKartografiController::class, 'deletedKartografi'])->middleware(['admin'])->name('arsipkartografi.trash');
+    Route::get('/arsipkartografi/index/{id}/restore', [ArsipKartografiController::class, 'restore'])->name('arsipkartografi.restore');
     Route::resource('arsipkartografi', ArsipKartografiController::class)->names('arsipkartografi');
+
+
 
     
 });

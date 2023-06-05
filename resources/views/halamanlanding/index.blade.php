@@ -26,7 +26,8 @@
                             rancang bangun, rencana kunci, change order; dan tahapan pasca konstruksi
                             (annotated plans, gambar terukur).)
                         </p>
-                        <button class="btn btn-warning mt-3 border-radius: 100%;">Klik Disini</button>
+                        {{--  <button class="btn btn-warning mt-3 border-radius: 100%;">Klik Disini</button>  --}}
+                        <a href="{{ route('datakearsitekturanuser') }}" class="btn btn-warning mt-3">Klik Disini</a>
                     </div>
                 </div>
 
@@ -42,7 +43,7 @@
                             peta yang menggambarkan suatu wilayah tertentu yang meliputi unsur
                             kartografi yaitu judul, skala, legenda, garis astronomis, misalnya peta,
                             dan atlas</p>
-                        <!-- <button class="btn btn-warning mt-3 border-radius: 100%;" href="{{ route('datakartografiuser') }}">Klik Disini</button> -->
+                        {{--  <!-- <button class="btn btn-warning mt-3 border-radius: 100%;" href="{{ route('datakartografiuser') }}">Klik Disini</button> -->  --}}
                         <a href="{{ route('datakartografiuser') }}" class="btn btn-warning mt-3">Klik Disini</a>
                     </div>
                 </div>
