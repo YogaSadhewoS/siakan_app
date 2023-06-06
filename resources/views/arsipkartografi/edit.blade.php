@@ -3,6 +3,8 @@
     <!doctype html>
     <html lang="en">
 
+    <title>Arsip Kartografi | Edit</title>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -207,17 +209,7 @@
 
 
                 </fieldset>
-                <div class="form-group row">
-                    <div class="col-sm-2">Checkbox</div>
-                    <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
-                                Example checkbox
-                            </label>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="mb-20 form-group row">
                     <div class="col-sm-10 mb-50">
                         <button type="submit" class="btn btn-primary">Update</button>

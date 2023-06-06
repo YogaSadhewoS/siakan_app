@@ -48,10 +48,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/arsipkearsitekturan/trash', [ArsipKearsitekturanController::class, 'deletedKearsitekturan'])->middleware(['admin'])->name('arsipkearsitekturan.trash');
     Route::get('/arsipkearsitekturan/index/{id}/restore', [ArsipKearsitekturanController::class, 'restore'])->name('arsipkearsitekturan.restore');
+    Route::delete('/arsipkearsitekturan/hard-delete/{id}', [ArsipKearsitekturanController::class, 'hardDelete'])->name('arsipkearsitekturan.hardDelete');
     Route::resource('arsipkearsitekturan', ArsipKearsitekturanController::class)->names('arsipkearsitekturan');
 
     Route::get('/arsipkartografi/trash', [ArsipKartografiController::class, 'deletedKartografi'])->middleware(['admin'])->name('arsipkartografi.trash');
     Route::get('/arsipkartografi/index/{id}/restore', [ArsipKartografiController::class, 'restore'])->name('arsipkartografi.restore');
+    Route::delete('/arsipkartografi/hard-delete/{id}', [ArsipKartografiController::class, 'hardDelete'])->name('arsipkartografi.hardDelete');
     Route::resource('arsipkartografi', ArsipKartografiController::class)->names('arsipkartografi');
 
 

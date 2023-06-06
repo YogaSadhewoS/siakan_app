@@ -152,4 +152,22 @@ class ArsipKearsitekturanController extends Controller
             ->route('arsipkearsitekturan.index')
             ->with('error', 'Failed to restore Kearsitekturan.');
     }
+
+    public function hardDelete($id)
+    {
+        $kearsitekturan = Kearsitekturan::withTrashed()
+            ->where('id', $id)
+            ->first();
+
+        if ($kearsitekturan) {
+            $kearsitekturan->forceDelete();
+            return redirect()
+                ->route('arsipkearsitekturan.trash')
+                ->with('success', 'Kearsitekturan permanently deleted successfully.');
+        }
+
+        return redirect()
+            ->route('arsipkearsitekturan.trash')
+            ->with('error', 'Failed to permanently delete kearsitekturan.');
+    }
 }

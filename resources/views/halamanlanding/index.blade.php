@@ -27,7 +27,7 @@
                             (annotated plans, gambar terukur).)
                         </p>
                         {{--  <button class="btn btn-warning mt-3 border-radius: 100%;">Klik Disini</button>  --}}
-                        <a href="{{ route('datakearsitekturanuser') }}" class="btn btn-warning mt-3">Klik Disini</a>
+                        <a href="{{ route('datakearsitekturanuser') }}" class="btn btn-warning mt-3" style="background-color: #FF9636; border-radius: 25px; color:white; width: 130px; height: 43px">KLIK DISINI</a>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                             kartografi yaitu judul, skala, legenda, garis astronomis, misalnya peta,
                             dan atlas</p>
                         {{--  <!-- <button class="btn btn-warning mt-3 border-radius: 100%;" href="{{ route('datakartografiuser') }}">Klik Disini</button> -->  --}}
-                        <a href="{{ route('datakartografiuser') }}" class="btn btn-warning mt-3">Klik Disini</a>
+                        <a href="{{ route('datakartografiuser') }}" class="btn btn-warning mt-3" style="background-color: #FF9636; border-radius: 25px; color:white; width: 130px; height: 43px">KLIK DISINI</a>
                     </div>
                 </div>
             </div>
@@ -83,14 +83,17 @@
                 </div>
                 <div class="col-md-4 text-center text-md-start">
                     <h5 class="text-uppercase">Follow Kami</h5>
-                    <a href="https://www.facebook.com/dinasarpusjateng" class="me-4" target="_blank">
-                        <img src="/images/fb.png" alt="Facebook" width="32" height="32">
+                    <a href="https://www.facebook.com/dinasarpusjateng" class="me-4" target="_blank" style="text-decoration: none">
+                        <img src="/images/fb.png" alt="Facebook" width="28" height="28">
                     </a>
-                    <a href="https://twitter.com/dinarpus_jateng" class="me-4" target="_blank">
-                        <img src="/images/twitter.png" alt="Twitter" width="32" height="32">
+                    <a href="https://twitter.com/dinarpus_jateng" class="me-4" target="_blank" style="text-decoration: none">
+                        <img src="/images/twitter.png" alt="Twitter" width="36" height="36">
                     </a>
-                    <a href="https://www.instagram.com/dinas_arpus_jateng/" class="me-4" target="_blank">
+                    <a href="https://www.instagram.com/dinas_arpus_jateng/" class="me-4" target="_blank" style="text-decoration: none">
                         <img src="/images/ig.png" alt="Instagram" width="32" height="32">
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC9NGOWxiwmpLNx5gmlgPMoQ" class="me-4" target="_blank" style="text-decoration: none">
+                        <img src="/images/yt.png" alt="Youtube" width="30" height="30">
                     </a>
                 </div>
             </div>

@@ -39,11 +39,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link text-primary" href="{{ route('login') }}">Login</a>
+              <a class="nav-link" href="{{ route('login') }}" style="color: #E36159;">Login</a>
             </li>
-            <li class="nav-item">
+            {{--  <li class="nav-item">
               <a class="nav-link text-primary" href="{{ route('register') }}">Register</a>
-            </li>
+            </li>  --}}
           </ul>
         </div>
       </div>

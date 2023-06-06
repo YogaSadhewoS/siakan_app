@@ -24,7 +24,7 @@
             <div class="card-body mx-auto "style="width:80%;">
                 <div class="container-fluid mt-5">    
                 <div class="card-header py-6 ">
-                            <h6 class="m-2 h2 font-weight-bold text-primary">Kumpulan Arsip Kartografi</h6>
+                            <h6 class="m-2 h2 font-weight-bold" style="color: #E36159;">Kumpulan Arsip Kartografi</h6>
                             <!-- <span class="border-form border-2 mr-40 ml-40"></span> -->
 
                         </div>

@@ -152,4 +152,22 @@ class ArsipKartografiController extends Controller
             ->route('arsipkartografi.index')
             ->with('error', 'Failed to restore Kartografi.');
     }
+
+    public function hardDelete($id)
+    {
+        $kartografi = Kartografi::withTrashed()
+            ->where('id', $id)
+            ->first();
+
+        if ($kartografi) {
+            $kartografi->forceDelete();
+            return redirect()
+                ->route('arsipkartografi.trash')
+                ->with('success', 'Kartografi permanently deleted successfully.');
+        }
+
+        return redirect()
+            ->route('arsipkartografi.trash')
+            ->with('error', 'Failed to permanently delete Kartografi.');
+    }
 }

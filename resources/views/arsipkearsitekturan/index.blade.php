@@ -7,6 +7,9 @@
 
 <!doctype html>
 <html lang="en">
+
+    <title>Arsip Kearsitekturan</title>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +24,7 @@
         <div class="card-body mr-20 ml-20">
             <div class="container-fluid ">     
             <div class="card-header py-6 ">
-                        <h6 class="m-2 h2 font-weight-bold text-primary">Kumpulan Arsip Kearsitekturan</h6>
+                        <h6 class="m-2 h2 font-weight-bold" style="color: #E36159;">Kumpulan Arsip Kearsitekturan</h6>
                         <!-- <span class="border-form border-2 mr-40 ml-40"></span> -->
 
                     </div>

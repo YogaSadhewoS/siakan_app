@@ -3,6 +3,9 @@
 
 <!doctype html>
 <html lang="en">
+
+<title>Restore Arsip Kearsitekturan</title>
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +20,7 @@
         <div class="card-body mr-20 ml-20">
             <div class="container-fluid ">     
             <div class="card-header py-6 ">
-                        <h6 class="m-2 h2 font-weight-bold text-primary">Kumpulan Data Terbuang Arsip Kearsitekturan</h6>
+                        <h6 class="m-2 h2 font-weight-bold" style="color: #E36159;">Kumpulan Data Terbuang Arsip Kearsitekturan</h6>
                         <!-- <span class="border-form border-2 mr-40 ml-40"></span> -->
 
                     </div>
@@ -53,6 +56,11 @@
                             <a href="{{ route('arsipkearsitekturan.restore', $kearsitekturan->id) }}">
                                 <button type="submit" class="btn btn-success btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin mengembalikan data?')">Restore</button>
                             </a>
+                            <form action="{{ route('arsipkearsitekturan.hardDelete', $kearsitekturan->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin menghapus data permanen?')">Hard Delete</button>
+                            </form>
                             </td>
                         </tr>
                         @endforeach
