@@ -1,3 +1,5 @@
+<title>Halaman Login</title>
+
 <x-guest-layout>
     <!-- Session Status -->
     @if(session('success'))
@@ -5,6 +7,8 @@
         {{ session('success') }}
     </div>
     @endif
+
+
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
@@ -52,12 +56,12 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-        <div class="flex items-center justify-center mt-1 text-sm">
+        {{--  <div class="flex items-center justify-center mt-1 text-sm">
             <p>
                 Belum punya akun? <a style="color: #008AD7;" href="{{ route('register') }}">
                     Daftar Akun
                 </a>
             </p>
-        </div>
+        </div>  --}}
     </form>
 </x-guest-layout>

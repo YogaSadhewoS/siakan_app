@@ -44,7 +44,7 @@
                             <th>KURUN WAKTU</th>
                             <th>ISI INFORMASI</th>
                             <th>JENIS PETA</th>
-                            <th>AKSI</th>
+                            <th>DETAIL</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,15 +57,42 @@
                             <td>{{ $kearsitekturan->isi_informasi }}</td>
                             <td>{{ $kearsitekturan->tipe->nama }}</td>
                             <td class="d-flex align-items-center">
-                            <a href="#" class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $kearsitekturan->id }}">Show</a>
-                            @can('admin')
-                            <a href="{{ route('arsipkearsitekturan.edit', $kearsitekturan->id) }}" class="btn btn-primary btn-sm me-2">Edit</a>
-                            <form action="{{ route('arsipkearsitekturan.destroy', $kearsitekturan->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Delete</button>
-                            </form>
-                            @endcan
+
+                                <div class="dropdown" style="background-color: #E36159; padding-right:10px">
+                                    <button type="button" id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="/images/icondetail.png" alt="Tombol Aksi">
+                                    </button>
+                                    <button class="btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        {{--  <li>
+                                            <a href="#" class="dropdown-item btn-info btn-sm me-2"
+                                            >File</a>
+                                        </li>  --}}
+                                        <li>
+                                            <a href="#" class="dropdown-item btn-info btn-sm me-2"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modalDetail{{ $kearsitekturan->id }}">Show</a>
+                                        </li>
+                                        @can('admin')
+                                            <li>
+                                                <a href="{{ route('arsipkearsitekturan.edit', $kearsitekturan->id) }}"
+                                                    class="dropdown-item btn-primary btn-sm me-2">Edit</a>
+                                            </li>
+                                            <li>
+                                                <form action="{{ route('arsipkearsitekturan.destroy', $kearsitekturan->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="dropdown-item btn-danger btn-sm me-2"
+                                                        onclick="return confirm('Apakah anda yakin ingin menghapus?')">Delete</button>
+                                                </form>
+                                            </li>
+                                        @endcan
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                               <!-- Modal Detail -->

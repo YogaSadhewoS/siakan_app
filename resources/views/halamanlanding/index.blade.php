@@ -1,6 +1,9 @@
 @extends('halamanlanding.navbar')
 
 @section('navbar')
+
+    <title>Landing page</title>
+
     <div class="card rounded-0" style="width: 100%;">
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators" style="height: 100px">

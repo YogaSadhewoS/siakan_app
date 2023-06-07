@@ -40,7 +40,7 @@
                             <th>KURUN WAKTU</th>
                             <th>ISI INFORMASI</th>
                             <th>JENIS PETA</th>
-                            <th>AKSI</th>
+                            <th>DETAIL</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,14 +53,32 @@
                             <td>{{ $kearsitekturan->isi_informasi }}</td>
                             <td>{{ $kearsitekturan->tipe->nama }}</td>
                             <td class="d-flex align-items-center">
-                            <a href="{{ route('arsipkearsitekturan.restore', $kearsitekturan->id) }}">
-                                <button type="submit" class="btn btn-success btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin mengembalikan data?')">Restore</button>
-                            </a>
-                            <form action="{{ route('arsipkearsitekturan.hardDelete', $kearsitekturan->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin menghapus data permanen?')">Hard Delete</button>
-                            </form>
+                            <div class="dropdown" style="background-color: #E36159; padding-right:10px">
+                                <button type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="/images/icondetail.png" alt="Tombol Aksi">
+                                </button>
+                                <button class="btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    @can('admin')
+                                        <li>
+                                            <a href="{{ route('arsipkearsitekturan.restore', $kearsitekturan->id) }}" class="dropdown-item btn-primary btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin mengembalikan data?')">
+                                                Restore
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('arsipkearsitekturan.hardDelete', $kearsitekturan->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item btn-danger btn-sm me-2" onclick="return confirm('Apakah anda yakin ingin menghapus data secara permanen?')">Hard Delete</button>
+                                            </form>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+
                             </td>
                         </tr>
                         @endforeach

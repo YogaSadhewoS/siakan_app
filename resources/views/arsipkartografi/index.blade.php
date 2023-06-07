@@ -45,7 +45,7 @@
                             <th>KURUN WAKTU</th>
                             <th>ISI INFORMASI</th>
                             <th>JENIS PETA</th>
-                            <th>AKSI</th>
+                            <th>DETAIL</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,6 +67,10 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            {{--  <li>
+                                            <a href="#" class="dropdown-item btn-info btn-sm me-2"
+                                            >File</a>
+                                        </li>  --}}
                                             <li>
                                                 <a href="#" class="dropdown-item btn-info btn-sm me-2"
                                                     data-bs-toggle="modal"

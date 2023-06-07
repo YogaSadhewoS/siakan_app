@@ -5,6 +5,8 @@
     use Carbon\Carbon;
 @endphp
 
+<title>Kumpulan Arsip Kartografi</title>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,7 +23,7 @@
         <!-- <div class="card rounded-0" style="width: 100%;"> -->
             <!-- <h4 class="text-form ml-40 mt-10">Arsip Kartografi</h4> -->
             <!-- <span class="mr-20 ml-30"></span> -->
-            <div class="card-body mx-auto "style="width:80%;">
+            <div class="card-body mx-auto "style="width:80%; padding-bottom: 50px">
                 <div class="container-fluid mt-5">    
                 <div class="card-header py-6 ">
                             <h6 class="m-2 h2 font-weight-bold" style="color: #E36159;">Kumpulan Arsip Kartografi</h6>
@@ -44,7 +46,7 @@
                                 <th>KURUN WAKTU</th>
                                 <th>ISI INFORMASI</th>
                                 <th>JENIS PETA</th>
-                                <th>AKSI</th>
+                                <th>DETAIL</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,7 +59,10 @@
                                 <td>{{ $kartografi->isi_informasi }}</td>
                                 <td>{{ $kartografi->tipe->nama }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-info btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $kartografi->id }}">Show</a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $kartografi->id }}">
+                                        <img src="/images/icondetail.png" alt="Tombol Aksi">
+                                    </a>
+                                    
                                 </td>
                             </tr>
                             <!-- Modal Detail -->
@@ -130,11 +135,15 @@
                                     </div>
                                 </div>
                             </div>
-
-                                <!-- End Modal Detail -->
+                            
+                            <!-- End Modal Detail -->
                             @endforeach
                         </tbody>
                     </table>
+                    <br>
+                    <a href="/" style="background-color: #E36159; border-radius: 10px; color: white; padding: 0.5% 3%; text-decoration: none; letter-spacing: 0.05em;">
+                        KEMBALI
+                    </a>
                 </div>
             </div>
 

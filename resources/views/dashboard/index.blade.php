@@ -37,7 +37,7 @@
                           rancang bangun, rencana kunci, change order; dan tahapan pasca konstruksi
                           (annotated plans, gambar terukur).)
                       </p>
-                      <a href="{{route('arsipkearsitekturan.index')}}" class="btn btn-warning mt-3" style="background-color: #FF9636; border-radius: 25px; color:white; width: 130px; height: 43px">KLIK DISINI</a>
+                      {{--  <a href="{{route('arsipkearsitekturan.index')}}" class="btn btn-warning mt-3" style="background-color: #FF9636; border-radius: 25px; color:white; width: 130px; height: 43px">KLIK DISINI</a>  --}}
                   </div>
               </div>
 
@@ -53,7 +53,7 @@
                           peta yang menggambarkan suatu wilayah tertentu yang meliputi unsur
                           kartografi yaitu judul, skala, legenda, garis astronomis, misalnya peta,
                           dan atlas</p>
-                      <a href="{{route('arsipkartografi.index')}}" class="btn btn-warning mt-3" style="background-color: #FF9636; border-radius: 25px; color:white; width: 130px; height: 43px">KLIK DISINI</a>
+                      {{--  <a href="{{route('arsipkartografi.index')}}" class="btn btn-warning mt-3" style="background-color: #FF9636; border-radius: 25px; color:white; width: 130px; height: 43px">KLIK DISINI</a>  --}}
                   </div>
               </div>
           </div>

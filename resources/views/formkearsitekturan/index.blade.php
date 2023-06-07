@@ -203,7 +203,7 @@
 
                 <div class="mb-20 form-group row">
                     <div class="col-sm-10 mb-50">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
                     </div>
                 </div>
             </form>
