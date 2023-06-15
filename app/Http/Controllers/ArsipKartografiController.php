@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kartografi;
 use App\Models\Tipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArsipKartografiController extends Controller
 {
@@ -15,22 +16,6 @@ class ArsipKartografiController extends Controller
     {
         $kartografis = Kartografi::all();
         return view('arsipkartografi.index', ['kartografis' => $kartografis]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -80,7 +65,15 @@ class ArsipKartografiController extends Controller
             'penerbit' => 'nullable',
             'skala' => 'required',
             'referensi' => 'required',
+            'image'=>'image|file|max:2048'
         ]);
+
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('arsip-images');
+        }
 
         $kartografi->tipe_id = $validatedData['tipe_id'];
         $kartografi->fonds = $validatedData['fonds'];
@@ -100,6 +93,7 @@ class ArsipKartografiController extends Controller
         $kartografi->penerbit = $validatedData['penerbit'];
         $kartografi->skala = $validatedData['skala'];
         $kartografi->referensi = $validatedData['referensi'];
+        $kartografi->image = $validatedData['image'];
 
         $kartografi->save();
 
@@ -158,6 +152,10 @@ class ArsipKartografiController extends Controller
         $kartografi = Kartografi::withTrashed()
             ->where('id', $id)
             ->first();
+
+        if($kartografi->image){
+            Storage::delete($kartografi->image);
+        }
 
         if ($kartografi) {
             $kartografi->forceDelete();

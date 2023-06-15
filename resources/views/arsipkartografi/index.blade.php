@@ -102,13 +102,21 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalDetailLabel{{ $kartografi->id }}"
-                                                style="color: #999; margin-left:100px;">Detail Informasi Arsip Kartografi
+                                                style="color: #999; margin-left:100px;">Detail Informasi Arsip Kartografi - {{ $kartografi->judul }}
                                             </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+                                            <div style="display: flex; justify-content: center; margin-bottom: 5%">
+                                                @if ($kartografi->image)
+                                                <img src="{{ asset('storage/' . $kartografi->image) }}" alt="gambar arsip" style="max-width: 100%; width: 35rem; height: 20rem;">
+                                                @else
+                                                <img src="{{ asset('images/logoarpus.png') }}" alt="gambar arsip" style="max-width: 100%; width: 10rem; height: 10rem;">
+                                                @endif
+                                            </div>
                                             <dl class="row" style="margin-left:100px; color: #999;">
+                                                <br>
                                                 <dt class="col-sm-4">FONDS</dt>
                                                 <dd class="col-sm-8">{{ strtoupper($kartografi->fonds) }}</dd>
 

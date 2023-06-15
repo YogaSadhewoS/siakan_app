@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kearsitekturan;
 use App\Models\Tipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArsipKearsitekturanController extends Controller
 {
@@ -80,7 +81,15 @@ class ArsipKearsitekturanController extends Controller
             'penerbit' => 'nullable',
             'skala' => 'required',
             'referensi' => 'required',
+            'image'=>'image|file|max:2048'
         ]);
+
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('arsip-images');
+        }
 
         $kearsitekturan->tipe_id = $validatedData['tipe_id'];
         $kearsitekturan->fonds = $validatedData['fonds'];
@@ -100,6 +109,7 @@ class ArsipKearsitekturanController extends Controller
         $kearsitekturan->penerbit = $validatedData['penerbit'];
         $kearsitekturan->skala = $validatedData['skala'];
         $kearsitekturan->referensi = $validatedData['referensi'];
+        $kearsitekturan->image = $validatedData['image'];
 
         $kearsitekturan->save();
 
@@ -158,6 +168,10 @@ class ArsipKearsitekturanController extends Controller
         $kearsitekturan = Kearsitekturan::withTrashed()
             ->where('id', $id)
             ->first();
+
+            if($kearsitekturan->image){
+                Storage::delete($kearsitekturan->image);
+            }
 
         if ($kearsitekturan) {
             $kearsitekturan->forceDelete();

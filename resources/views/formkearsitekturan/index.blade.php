@@ -17,7 +17,7 @@
         <div class="card rounded-0" style="width: 100%;">
             <h4 class="text-form ml-40 mt-10">Formulir Deskripsi Arsip Kearsitekturan</h4>
             <span class="border-form border-2 mr-40 ml-40"></span>
-            <form method="post" action="/formkearsitekturan" class="center mr-40 ml-40 mt-10">
+            <form method="post" action="/formkearsitekturan" class="center mr-40 ml-40 mt-10" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <label for="fonds" class="text-form col-sm-2 col-form-label">FONDS</label>
@@ -191,13 +191,21 @@
                     </div>
                 </div>
 
-                {{--  <div class="form-group row">
-            <label for="#" class="text-form col-sm-2 col-form-label">PDF</label>
-            <div class="col-sm-3 mb-4">
-                <input class="form-control" type="file" id="formFile" required>
-            </div>
-        </div>  --}}
-
+                <div class="form-group row mb-3">
+                    <label for="image" class="text-form col-sm-2 col-form-label">GAMBAR ARSIP</label>
+                    <div class="col-sm-3 mb-4">
+                        <img class="img-preview img-fluid mb-3">
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                        <small class="form-text">
+                            Ukuran gambar maksimal 2MB
+                          </small>
+                        @error('image')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                  </div>
 
                 </fieldset>
 
@@ -208,6 +216,23 @@
                 </div>
             </form>
         </div>
+
+        //Preview Image
+        <script>
+            function previewImage(){
+                const image = document.querySelector('#image');
+                const imgPreview = document.querySelector('.img-preview');
+
+                imgPreview.style.display = 'block';
+
+                const oFReader = new FileReader();
+                oFReader.readAsDataURL(image.files[0]);
+
+                oFReader.onload = function(oFREvent) {
+                    imgPreview.src = oFREvent.target.result;
+                }
+            }
+        </script>
 
         <!-- <script>
             // Example starter JavaScript for disabling form submissions if there are invalid fields

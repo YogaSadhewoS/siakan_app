@@ -52,45 +52,19 @@ class FormKearsitekturanController extends Controller
             'asli_fotokopi'=>'required',
             'penerbit'=>'required',
             'skala'=>'required',
-            'referensi'=>'required'
+            'referensi'=>'required',
+            'image'=>'image|file|max:2048'
         ]);
 
-        $validatedData['user_id'] = auth()->user()->id;
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('arsip-images');
+        }
 
         Kearsitekturan::create($validatedData);
 
-        return redirect('/arsipkearsitekturan');
+        return redirect()
+            ->route('arsipkearsitekturan.index')
+            ->with('success', 'Kearsitekturan created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kearsitekturan $kearsitekturan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kearsitekturan $kearsitekturan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Kearsitekturan $kearsitekturan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Kearsitekturan $kearsitekturan)
-    {
-        //
-    }
 }

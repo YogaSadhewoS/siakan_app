@@ -35,6 +35,7 @@ class FormKartografiController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'tipe_id'=>'required',
             'fonds'=>'required',
@@ -53,45 +54,19 @@ class FormKartografiController extends Controller
             'asli_fotokopi'=>'required',
             'penerbit'=>'required',
             'skala'=>'required',
-            'referensi'=>'required'
+            'referensi'=>'required',
+            'image'=>'image|file|max:2048'
         ]);
 
-        $validatedData['user_id'] = auth()->user()->id;
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('arsip-images');
+        }
 
         Kartografi::create($validatedData);
 
-        return redirect('/arsipkartografi');
+        return redirect()
+            ->route('arsipkartografi.index')
+            ->with('success', 'Kartografi created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kartografi $kartografi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kartografi $kartografi)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Kartografi $kartografi)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Kartografi $kartografi)
-    {
-        //
-    }
 }
